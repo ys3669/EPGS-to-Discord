@@ -12,9 +12,9 @@ const _title = process.env.NAME
 const _description = process.env.DESCRIPTION
 const _programid = process.env.PROGRAMID
 const _recordedid = process.env.RECORDEDID
-const _date = new Date(Number(process.env.STARTAT)).toLocaleDateString("japanese", {year: 'numeric', month: '2-digit', day: '2-digit', weekday: 'long'})
-const _startAt = new Date(Number(process.env.STARTAT)).toLocaleTimeString("japanese")
-const _endAt = new Date(Number(process.env.ENDAT)).toLocaleTimeString("japanese")
+const _date = new Date(Number(process.env.STARTAT)).toLocaleDateString("ja-JP", { timmezone: "Asia/Tokyo", year: 'numeric', month: '2-digit', day: '2-digit', weekday: 'short' })
+const _startAt = new Date(Number(process.env.STARTAT)).toLocaleTimeString("ja-JP", { timmezone: "Asia/Tokyo" })
+const _endAt = new Date(Number(process.env.ENDAT)).toLocaleTimeString("ja-JP", { timmezone: "Asia/Tokyo" })
 const _Path = process.env.RECPATH // 録画ファイルの保存フォルダを指定
 
 // コンフィグファイルの読み込み
