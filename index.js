@@ -47,7 +47,7 @@ var dropCheck = (callback)=>{
     let recInfo = getRecorded(_recordedid, (json)=>{
         json = JSON.parse(json)
         try{
-            callback(json.errorCnt, json.dropCnt, json.scramblingCnt)
+            callback(json.dropLogFile.errorCnt, json.dropLogFile.dropCnt, json.dropLogFile.scramblingCnt)
         } catch(e) {
             callback(-1, -1 ,-1)
         }
@@ -67,7 +67,7 @@ else if(process.argv[2] === 'end'){
     mes = ":pause_button: "+' __**'+_title+'**__\n```'+_startAt+'～'+_endAt+'［'+_channel+'］\n'
     dropCheck((err, drop, scr)=>{
         if(err==-1) mes += "!===== Cannot load recorded file! =====!```" // 実行結果がnullの場合
-        else if(err!='0'){
+        else if (err | drop | scr != '0') {
             // 映像PIDのd値（ドロップ値）が0でない場合≒ドロップがある場合は詳細を投稿（メンション付き）
             mes += "!===== This MEPG-TS has dropped frame! =====!\n"
             mes += 'Error:     '+err+'\nDrop:      '+drop+'\nScrmbling: '+scr+'```\@everyone'
